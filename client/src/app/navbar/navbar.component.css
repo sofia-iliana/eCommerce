@@ -1,0 +1,85 @@
+.bg {
+  background-color: #f8f1dd;
+}
+
+.brown {
+  color: #4f3824;
+}
+
+.brown:hover {
+  background-color: #f8e8bf;
+}
+
+.dark-brown {
+  color: #362719;
+}
+
+.leaf {
+  color: #55b37f;
+  transform: rotate(30deg);
+  font-size: 45px;
+  border: 1px solid #4f3824;
+  border-radius: 100%;
+  padding: 2px;
+}
+
+.leaf-container {
+  padding: 2px;
+  border: 1px solid #4f3824;
+  border-radius: 100%;
+}
+
+.border-brown {
+  border-bottom: 1px solid #4f3824;
+}
+
+.cart-container {
+  border: 2px solid #884c2a;
+}
+
+.cart {
+  color: #a86037;
+}
+
+.bg-green {
+  background-color: #55b37f;
+}
+
+.text-beige {
+  color: rgb(248, 245, 236);
+}
+
+.bg-green:hover {
+  background-color: #279659;
+}
+
+.border-bottom-brown {
+  border-bottom: 1px solid #a86037;
+}
+
+.bg-light {
+  background-color: #fcf8e7;
+  box-shadow: 2px 2px 2px 2px #f8e8bf;
+}
+
+.text-red {
+  color: #af2912;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input:focus {
+  outline: none;
+}
+
+.border-yellow {
+  border: 1px solid #f7e4b6;
+}
+
+.size-sm {
+  font-size: 13px;
+}

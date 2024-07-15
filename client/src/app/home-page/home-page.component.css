@@ -1,0 +1,15 @@
+.main {
+  background-image: url(../Images/content-pixie-m-gqDRzbJLQ-unsplash.jpg);
+  background-size: cover;
+  height: 100dvh;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.green-border {
+  border: 1px solid #ffefc8;
+}
+
+.text-beige {
+  color: #ffefc8;
+}

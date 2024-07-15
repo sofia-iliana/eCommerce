@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="bg-beige h-full py-12 dark-brown">
+      <div class="flex justify-between ml-8 mt-10">
+        <div class="w-5/12">
+          <h3 class="text-lg font-semibold">Order Details</h3>
+          @for(item of cartItems; track $index){
+          <div
+            class="flex justify-between p-3 border-bottom-brown space-x-10 items-center"
+          >
+            <div class="flex items-center">
+              <img src="{{ item.image }}" class="h-16 mr-4" />
+              <p class="dark-brown font-semibold">{{ item.name }}</p>
+            </div>
+            <div class="flex space-x-10">
+              <p class="dark-brown font-semibold">
+                {{ item.quantity && (item.price * item.quantity).toFixed(2) }}$
+              </p>
+              <div class="flex items-start">
+                <div class="border-yellow rounded-sm mr-4">
+                  <button
+                    class="px-2 font-semibold"
+                    (click)="reduceAmount(item)"
+                  >
+                    <i class="fa fa-minus size-sm brown"></i>
+                  </button>
+                  <input
+                    type="number"
+                    class="w-6 text-center"
+                    min="1"
+                    placeholder="1"
+                    [(ngModel)]="item.quantity"
+                  />
+                  <button
+                    class="px-2 font-semibold"
+                    (click)="increaseAmount(item)"
+                  >
+                    <i class="fa fa-plus size-sm brown"></i>
+                  </button>
+                </div>
+                <button (click)="removeCartItem(item.id)">
+                  <i class="fa fa-close text-red"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          }
+          <div class="w-full"></div>
+          <div class="flex w-10/12 justify-between ml-8 mt-6">
+            <h4 class="text-xl font-bold">Total:</h4>
+            <p class="text-xl font-bold">{{ total.toFixed(2) }}$</p>
+          </div>
+          <button
+            routerLink="/tea"
+            class="mt-12 text-lg rounded-md p-3 font-bold btn-green"
+          >
+            Continue Shopping
+          </button>
+        </div>
+        <div class="w-1/2">
+          <div class="rounded-lg bg-light w-9/12 p-8 ml-20">
+            <h3 class="text-lg font-semibold">Shipping Details</h3>
+            <form
+              [formGroup]="registerForm"
+              (ngSubmit)="register()"
+              class="w-11/12 m-4 space-y-4 flex flex-col"
+            >
+              <div class="flex w-full justify-between">
+                <div class="flex flex-col w-5/12">
+                  <label class="font-semibold">First Name <span>*</span></label>
+                  <input
+                    formControlName="firstName"
+                    type="text"
+                    class="border-yellow rounded-sm h-7"
+                  />
+                </div>
+                <div class="flex flex-col w-6/12">
+                  <label class="font-semibold">Last Name <span>*</span></label>
+                  <input
+                    formControlName="lastName"
+                    type="text"
+                    class="border-yellow rounded-sm h-7"
+                  />
+                </div>
+              </div>
+              <div class="flex w-full justify-between">
+                <div class="flex flex-col">
+                  <label class="font-semibold"
+                    >Mobile Number <span>*</span></label
+                  >
+                  <input
+                    formControlName="mobile"
+                    type="text"
+                    class="border-yellow rounded-sm h-7"
+                  />
+                </div>
+                <div class="flex flex-col w-6/12">
+                  <label class="font-semibold">Email <span>*</span></label>
+                  <input
+                    formControlName="email"
+                    type="text"
+                    class="border-yellow rounded-sm h-7"
+                  />
+                </div>
+              </div>
+              <div class="flex justify-between w-full">
+                <div class="flex flex-col w-8/12">
+                  <label class="font-semibold">Street <span>*</span></label>
+                  <input
+                    formControlName="street"
+                    type="text"
+                    class="border-yellow rounded-sm h-7"
+                  />
+                </div>
+                <div class="flex flex-col w-3/12">
+                  <label class="font-semibold">Number <span>*</span></label>
+                  <input
+                    formControlName="number"
+                    type="text"
+                    class="border-yellow rounded-sm h-7"
+                  />
+                </div>
+              </div>
+              <div class="flex justify-between w-full">
+                <div class="flex flex-col">
+                  <label class="font-semibold">ZIP <span>*</span></label>
+                  <input
+                    formControlName="zip"
+                    type="text"
+                    class="border-yellow rounded-sm h-7"
+                  />
+                </div>
+                <div class="flex flex-col w-6/12">
+                  <label class="font-semibold">City <span>*</span></label>
+                  <input
+                    formControlName="city"
+                    type="text"
+                    class="border-yellow rounded-sm h-7"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-col">
+                <label class="font-semibold">Country <span>*</span></label>
+                <input
+                  formControlName="country"
+                  type="text"
+                  class="border-yellow rounded-sm h-7"
+                />
+              </div>
+              <div class="flex flex-col">
+                <label class="font-semibold">Comments:</label>
+                <textarea
+                  formControlName="comments"
+                  class="border-yellow rounded-sm h-32"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                *ngIf="registerForm.status"
+                class="text-lg rounded-md p-2 font-bold btn-green self-end mt-16"
+              >
+                Proceed with payment
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

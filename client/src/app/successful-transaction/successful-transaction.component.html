@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="bg-beige pt-12 flex flex-col items-center">
+      <div class="text-center mt-16 dark-brown bg-green p-10 w-7/12 rounded-md">
+        <h3 class="text-2xl font-semibold">Your transaction is successful.</h3>
+        <p class="text-lg mt-2">Your order will be shipped soon</p>
+      </div>
+      <div class="bg-light mt-8 w-9/12 rounded-md p-8">
+        <h5 class="text-center font-bold text-2xl dark-brown">Order Details</h5>
+        <div class="flex justify-between">
+          <div class="w-5/12 space-y-5 my-10">
+            @for (item of cart; track $index) {
+            <div class="flex dark-brown font-semibold justify-between text-lg">
+              <p>{{ item.name }}</p>
+              <p>Price: {{ item.quantity }} x {{ item.price.toFixed(2) }}$</p>
+            </div>
+            }
+            <div class="border-bottom-brown"></div>
+            <div class="flex justify-between">
+              <p class="text-xl font-semibold dark-brown">Total:</p>
+              <p class="text-xl font-semibold dark-brown">
+                {{ total.toFixed(2) }}$
+              </p>
+            </div>
+          </div>
+          <div class="line mt-6"></div>
+          <div class="w-5/12 my-10 dark-brown font-semibold space-y-5 text-lg">
+            <p>First Name: <span class="font-bold">Sofia</span></p>
+            <p>Last Name: <span class="font-bold">Stamatoukou</span></p>
+            <p>Mobile Number:</p>
+            <p>Email:</p>
+            <p>Address:</p>
+            <p>ZIP:</p>
+            <p>City:</p>
+            <p>Country:</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

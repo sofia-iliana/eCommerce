@@ -1,0 +1,56 @@
+.bg-beige {
+  background-color: #faf0d6;
+  height: 100%;
+}
+
+.btn-green {
+  color: #279659;
+  border: 2px solid #279659;
+}
+
+.btn-green:hover {
+  color: #fcf8e7;
+  background-color: #279659;
+}
+
+.dark-brown {
+  color: #362719;
+}
+
+.border-bottom-brown {
+  border-bottom: 1px solid #a86037;
+}
+
+.border-yellow {
+  border: 1px solid #f7e4b6;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input:focus {
+  outline: none;
+}
+
+textarea {
+  outline: none;
+}
+
+.text-red {
+  color: #af2912;
+}
+
+.brown {
+  color: #4f3824;
+}
+
+.bg-light {
+  background-color: #fcf8e7;
+}
+
+span {
+  color: #af2912;
+}

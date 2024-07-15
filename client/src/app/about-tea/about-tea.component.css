@@ -1,0 +1,35 @@
+.bg-beige {
+  background-color: #faf0d6;
+}
+
+.border-brown {
+  border-right: 2px solid #d1733d;
+  border-top: 2px solid #d1733d;
+  border-bottom: 2px solid #d1733d;
+}
+
+.dark-brown {
+  color: #362719;
+}
+
+.border-dark-brown {
+  border-left: 2px solid #362719;
+  border-top: 2px solid #362719;
+  border-bottom: 2px solid #362719;
+}
+
+.border-green {
+  border-right: 2px solid #55b37f;
+  border-top: 2px solid #55b37f;
+  border-bottom: 2px solid #55b37f;
+}
+
+.border-red {
+  border-left: 2px solid #e9724c;
+  border-top: 2px solid #e9724c;
+  border-bottom: 2px solid #e9724c;
+}
+
+.text-brown {
+  color: #4f3824;
+}

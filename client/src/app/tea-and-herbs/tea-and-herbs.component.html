@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="bg-beige h-full pt-12 flex flex-col">
+      <div
+        *ngIf="showMessage"
+        id="toast-success"
+        class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow fixed right-10 top-16"
+        role="alert"
+      >
+        <div
+          class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 rounded-lg"
+        >
+          <svg
+            class="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+            />
+          </svg>
+          <span class="sr-only">Check icon</span>
+        </div>
+        <div class="ms-3 text-sm font-normal">
+          Item has been added successfully.
+        </div>
+      </div>
+      <h1 class="text-4xl mt-8 font-bold text-brown text-center">
+        Discover your favorite teas
+      </h1>
+      <h5
+        class="text-lg my-6 font-semibold w-6/12 self-center text-brown text-center"
+      >
+        We have invested in the best blends, the most skilled tea growers, the
+        best plantations to ensure that every cup that reaches you is the best
+        it can be.
+      </h5>
+      <div class="flex flex-col mt-8">
+        <p class="font-semibold dark-brown ml-16 mb-6">
+          What are you looking for today?
+        </p>
+        <div
+          class="btn-group h-fit ml-16 w-fit flex justify-center items-center rounded"
+        >
+          <button
+            #All
+            (click)="onSelectFilter(All.innerText)"
+            [ngClass]="selectedFilter === 'All' ? whenSelectedClass : classes"
+          >
+            All
+          </button>
+          <button
+            #Black
+            (click)="onSelectFilter(Black.innerText)"
+            [ngClass]="selectedFilter === 'Black' ? whenSelectedClass : classes"
+          >
+            Black
+          </button>
+          <button
+            #Green
+            (click)="onSelectFilter(Green.innerText)"
+            [ngClass]="selectedFilter === 'Green' ? whenSelectedClass : classes"
+          >
+            Green
+          </button>
+          <button
+            #Rooibos
+            (click)="onSelectFilter(Rooibos.innerText)"
+            [ngClass]="
+              selectedFilter === 'Rooibos' ? whenSelectedClass : classes
+            "
+          >
+            Rooibos
+          </button>
+          <button
+            #Herbal
+            (click)="onSelectFilter(Herbal.innerText)"
+            [ngClass]="
+              selectedFilter === 'Herbal' ? whenSelectedClass : classes
+            "
+          >
+            Herbal
+          </button>
+        </div>
+      </div>
+      <div class="w-10/12 self-center my-20 grid grid-cols-3 gap-8">
+        @for (tea of displayedTeas; track $index) {
+        <div class="rounded overflow-hidden border-yellow">
+          <img src="{{ tea.image }}" class="overflow-hidden" height="56" />
+          <div class="px-6 py-4 text-brown">
+            <div class="font-bold text-xl mb-2">{{ tea.name }}</div>
+            <p class="text-dark-brown text-base">
+              {{ tea.description }}
+            </p>
+            <div class="flex justify-between items-center">
+              <div class="font-semibold text-xl mb-2 mt-4">
+                {{ tea.price.toFixed(2) }} $
+              </div>
+              <button
+                class="rounded-full bg-yellow py-1 px-3 mt-3 font-semibold text-dark-brown"
+                (click)="addToCart(tea)"
+              >
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </body>
+</html>

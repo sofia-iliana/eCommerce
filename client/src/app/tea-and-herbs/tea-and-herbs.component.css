@@ -1,0 +1,38 @@
+.bg-beige {
+  background-color: #faf0d6;
+  height: 100%;
+}
+
+.btn-group {
+  border: 2px solid #ffd6af;
+  width: fit-content;
+}
+
+.text-brown {
+  color: #4f3824;
+}
+
+.text-dark-brown {
+  color: #362719;
+}
+
+.btn:hover {
+  background-color: #ffd6af;
+}
+
+.bg-peach {
+  background-color: #ffd6af;
+}
+
+.border-yellow {
+  border: 2px solid #f7e3b3;
+}
+
+.bg-yellow {
+  background-color: #f8e1ab;
+  height: fit-content;
+}
+
+.bg-yellow:hover {
+  background-color: #f8d98a;
+}

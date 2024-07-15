@@ -1,0 +1,161 @@
+<nav class="bg fixed w-full">
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between my-1">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <!-- Mobile menu button-->
+        <button
+          type="button"
+          class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="absolute -inset-0.5"></span>
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="block h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+          <svg
+            class="hidden h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+      >
+        <div routerLink="" class="flex items-center mr-10 cursor-pointer">
+          <div class="flex flex-shrink-0 items-center leaf-container">
+            <i class="fa fa-pagelines leaf"></i>
+          </div>
+          <h3 class="font-bold text-2xl ml-2 leading-5 dark-brown">
+            Tea & <br />Herbs
+          </h3>
+        </div>
+        <div class="hidden sm:ml-6 sm:block">
+          <div class="flex mt-2 space-x-6">
+            <a
+              routerLink="about-tea"
+              class="brown rounded-md px-3 py-2 text-lg font-medium"
+              aria-current="page"
+              >About Tea</a
+            >
+            <a
+              routerLink="tea"
+              class="brown hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+              >Tea and Herbs</a
+            >
+            <a
+              href="#"
+              class="brown hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+              >Accessories</a
+            >
+          </div>
+        </div>
+      </div>
+      <button
+        class="rounded-full cart-container w-12 h-12 flex items-center justify-center"
+        (click)="showCartItems()"
+      >
+        <i class="fa fa-shopping-basket fa-lg cart"></i>
+      </button>
+      <div
+        *ngIf="showCart"
+        class="absolute bg-light right-0 top-16 p-4 w-fit flex flex-col"
+      >
+        <p
+          *ngIf="cartItems.length === 0"
+          class="text-center dark-brown font-semibold"
+        >
+          Your cart is empty
+        </p>
+        @for (item of cartItems; track $index) {
+        <div class="flex justify-between p-3 border-bottom-brown space-x-10">
+          <div class="flex justify-between w-52">
+            <p class="dark-brown font-semibold">{{ item.name }}</p>
+            <p class="dark-brown font-semibold">
+              {{ item.quantity && (item.price * item.quantity).toFixed(2) }}$
+            </p>
+          </div>
+          <div class="flex">
+            <div class="border-yellow rounded-sm mr-4">
+              <button class="px-2 font-semibold" (click)="reduceAmount(item)">
+                <i class="fa fa-minus size-sm brown"></i>
+              </button>
+              <input
+                type="number"
+                class="w-6 text-center"
+                min="1"
+                placeholder="1"
+                [(ngModel)]="item.quantity"
+              />
+              <button class="px-2 font-semibold" (click)="increaseAmount(item)">
+                <i class="fa fa-plus size-sm brown"></i>
+              </button>
+            </div>
+            <button (click)="removeCartItem(item.id)">
+              <i class="fa fa-close text-red"></i>
+            </button>
+          </div>
+        </div>
+        }
+        <button
+          *ngIf="cartItems.length !== 0"
+          (click)="showCartItems()"
+          routerLink="checkout"
+          class="self-center bg-green p-2 text-beige rounded-sm font-semibold mt-6"
+        >
+          Proceed to checkout
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile menu, show/hide based on menu state. -->
+  <div class="sm:hidden" id="mobile-menu">
+    <div class="space-y-1 px-2 pb-3 pt-2">
+      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+      <a
+        href="#"
+        class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+        aria-current="page"
+        >Dashboard</a
+      >
+      <a
+        href="#"
+        class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+        >Team</a
+      >
+      <a
+        href="#"
+        class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+        >Projects</a
+      >
+      <a
+        href="#"
+        class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+        >Calendar</a
+      >
+    </div>
+  </div>
+  <div class="w-full border-brown"></div>
+</nav>

@@ -1,0 +1,24 @@
+.bg-beige {
+  background-color: #faf0d6;
+  height: 100vw;
+}
+.dark-brown {
+  color: #362719;
+}
+
+.bg-green {
+  background-color: rgb(85, 179, 127, 0.3);
+  height: fit-content;
+}
+
+.bg-light {
+  background-color: #fcf8e7;
+}
+
+.border-bottom-brown {
+  border-bottom: 1px solid #a86037;
+}
+
+.line {
+  border-left: 2px solid #a86037;
+}
