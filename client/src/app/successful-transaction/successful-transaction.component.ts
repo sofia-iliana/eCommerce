@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { BuyersInfoService } from '../BuyersInfo.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-successful-transaction',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './successful-transaction.component.html',
   styleUrl: './successful-transaction.component.css',
 })
 export class SuccessfulTransactionComponent implements OnInit {
+  info = inject(BuyersInfoService).buyersInfo;
   cart = JSON.parse(localStorage['cart']);
   total = 0;
 

@@ -94,7 +94,11 @@
       <div class="w-10/12 self-center my-20 grid grid-cols-3 gap-8">
         @for (tea of displayedTeas; track $index) {
         <div class="rounded overflow-hidden border-yellow">
-          <img src="{{ tea.image }}" class="overflow-hidden" height="56" />
+          <img
+            [src]="sanitizeImageUrl(tea.image)"
+            class="overflow-hidden"
+            height="56"
+          />
           <div class="px-6 py-4 text-brown">
             <div class="font-bold text-xl mb-2">{{ tea.name }}</div>
             <p class="text-dark-brown text-base">

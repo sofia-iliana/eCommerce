@@ -15,7 +15,7 @@
             class="flex justify-between p-3 border-bottom-brown space-x-10 items-center"
           >
             <div class="flex items-center">
-              <img src="{{ item.image }}" class="h-16 mr-4" />
+              <img [src]="sanitizeImageUrl(item.image)" class="h-16 mr-4" />
               <p class="dark-brown font-semibold">{{ item.name }}</p>
             </div>
             <div class="flex space-x-10">

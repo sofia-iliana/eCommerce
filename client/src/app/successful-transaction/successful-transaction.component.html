@@ -31,14 +31,34 @@
           </div>
           <div class="line mt-6"></div>
           <div class="w-5/12 my-10 dark-brown font-semibold space-y-5 text-lg">
-            <p>First Name: <span class="font-bold">Sofia</span></p>
-            <p>Last Name: <span class="font-bold">Stamatoukou</span></p>
-            <p>Mobile Number:</p>
-            <p>Email:</p>
-            <p>Address:</p>
-            <p>ZIP:</p>
-            <p>City:</p>
-            <p>Country:</p>
+            <p>
+              First Name: <span class="font-bold">{{ info.firstName }}</span>
+            </p>
+            <p>
+              Last Name: <span class="font-bold">{{ info.lastName }}</span>
+            </p>
+            <p>
+              Mobile Number: <span class="font-bold">{{ info.mobile }}</span>
+            </p>
+            <p>
+              Email: <span class="font-bold">{{ info.email }}</span>
+            </p>
+            <p>
+              Address:
+              <span class="font-bold">{{ info.street }} {{ info.number }}</span>
+            </p>
+            <p>
+              ZIP: <span class="font-bold">{{ info.zip }}</span>
+            </p>
+            <p>
+              City: <span class="font-bold">{{ info.city }}</span>
+            </p>
+            <p>
+              Country: <span class="font-bold">{{ info.country }}</span>
+            </p>
+            <p *ngIf="info.comments">
+              Comments: <span class="font-bold">{{ info.comments }}</span>
+            </p>
           </div>
         </div>
       </div>

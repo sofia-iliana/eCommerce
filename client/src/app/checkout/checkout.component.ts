@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CartService } from '../Cart.service';
 import { NgFor, CommonModule } from '@angular/common';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import {
   FormControl,
   FormGroup,
@@ -10,6 +11,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { TeaItem } from '../teaItem';
+import { BuyersInfoService, Info } from '../BuyersInfo.service';
 
 @Component({
   selector: 'app-checkout',
@@ -26,11 +28,12 @@ import { TeaItem } from '../teaItem';
 })
 export class CheckoutComponent implements OnInit {
   cartService = inject(CartService);
+  infoService = inject(BuyersInfoService);
   cartItems = this.cartService.getCartItems();
   total = 0;
   registerForm: FormGroup = new FormGroup({});
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -76,9 +79,13 @@ export class CheckoutComponent implements OnInit {
   }
 
   register() {
-    console.log(this.registerForm);
+    this.infoService.getBuyersInfo(this.registerForm.value as Info);
     if (this.registerForm.status === 'VALID') {
       this.router.navigate(['/payment']);
     }
+  }
+
+  sanitizeImageUrl(imageUrl: string): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
   }
 }

@@ -1,6 +1,6 @@
 import { CommonModule, NgClass, NgFor } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-//import { dummyTeas } from '../tea-products';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { CartService } from '../Cart.service';
 import { TeaItem } from '../teaItem';
 import { HttpClient } from '@angular/common/http';
@@ -21,7 +21,7 @@ export class TeaAndHerbsComponent implements OnInit {
   showMessage = false;
   http = inject(HttpClient);
 
-  constructor(public cartService: CartService) {}
+  constructor(public cartService: CartService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.http.get<TeaItem[]>('https://localhost:5001/api/teaitems').subscribe({
@@ -57,5 +57,9 @@ export class TeaAndHerbsComponent implements OnInit {
     setTimeout(() => {
       this.showMessage = false;
     }, 3600);
+  }
+
+  sanitizeImageUrl(imageUrl: string): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
   }
 }
