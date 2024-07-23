@@ -7,46 +7,64 @@
   </head>
   <body>
     <div class="bg-beige h-full py-12 dark-brown">
-      <div class="flex justify-between ml-8 mt-10">
-        <div class="w-5/12">
+      <div class="flex flex-col lg:flex-row justify-between md:ml-8 mt-10">
+        <div class="w-11/12 self-center lg:self-start lg:w-5/12">
           <h3 class="text-lg font-semibold">Order Details</h3>
           @for(item of cartItems; track $index){
           <div
-            class="flex justify-between p-3 border-bottom-brown space-x-10 items-center"
+            class="flex p-3 border-bottom-brown space-x-4 md:space-x-10 items-center"
           >
             <div class="flex items-center">
               <img [src]="sanitizeImageUrl(item.image)" class="h-16 mr-4" />
-              <p class="dark-brown font-semibold">{{ item.name }}</p>
             </div>
-            <div class="flex space-x-10">
-              <p class="dark-brown font-semibold">
-                {{ item.quantity && (item.price * item.quantity).toFixed(2) }}$
-              </p>
-              <div class="flex items-start">
-                <div class="border-yellow rounded-sm mr-4">
-                  <button
-                    class="px-2 font-semibold"
-                    (click)="reduceAmount(item)"
-                  >
-                    <i class="fa fa-minus size-sm brown"></i>
-                  </button>
-                  <input
-                    type="number"
-                    class="w-6 text-center"
-                    min="1"
-                    placeholder="1"
-                    [(ngModel)]="item.quantity"
-                  />
-                  <button
-                    class="px-2 font-semibold"
-                    (click)="increaseAmount(item)"
-                  >
-                    <i class="fa fa-plus size-sm brown"></i>
-                  </button>
-                </div>
-                <button (click)="removeCartItem(item.id)">
+            <div
+              class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row justify-between w-full"
+            >
+              <div class="flex w-full justify-between">
+                <p class="dark-brown font-semibold">{{ item.name }}</p>
+                <button
+                  class="self-end sm:hidden"
+                  (click)="removeCartItem(item.id)"
+                >
                   <i class="fa fa-close text-red"></i>
                 </button>
+              </div>
+
+              <div class="flex items-center justify-between sm:space-x-10">
+                <p class="dark-brown font-semibold">
+                  {{
+                    item.quantity && (item.price * item.quantity).toFixed(2)
+                  }}$
+                </p>
+                <div class="flex sm:flex-row items-start">
+                  <div class="flex border-yellow rounded-sm mr-4">
+                    <button
+                      class="px-2 font-semibold"
+                      (click)="reduceAmount(item)"
+                    >
+                      <i class="fa fa-minus size-sm brown"></i>
+                    </button>
+                    <input
+                      type="number"
+                      class="w-6 text-center"
+                      min="1"
+                      placeholder="1"
+                      [(ngModel)]="item.quantity"
+                    />
+                    <button
+                      class="px-2 font-semibold"
+                      (click)="increaseAmount(item)"
+                    >
+                      <i class="fa fa-plus size-sm brown"></i>
+                    </button>
+                  </div>
+                  <button
+                    class="self-center hidden sm:flex"
+                    (click)="removeCartItem(item.id)"
+                  >
+                    <i class="fa fa-close text-red"></i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -63,16 +81,20 @@
             Continue Shopping
           </button>
         </div>
-        <div class="w-1/2">
-          <div class="rounded-lg bg-light w-9/12 p-8 ml-20">
+        <div class="flex justify-center md:justify-start lg:w-1/2">
+          <div
+            class="rounded-lg bg-light w-11/12 self-center mt-10 p-4 md:mt-0 md:w-9/12 md:p-8 md:ml-20"
+          >
             <h3 class="text-lg font-semibold">Shipping Details</h3>
             <form
               [formGroup]="registerForm"
               (ngSubmit)="register()"
               class="w-11/12 m-4 space-y-4 flex flex-col"
             >
-              <div class="flex w-full justify-between">
-                <div class="flex flex-col w-5/12">
+              <div
+                class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row w-full justify-between"
+              >
+                <div class="flex flex-col sm:w-5/12">
                   <label class="font-semibold">First Name <span>*</span></label>
                   <input
                     formControlName="firstName"
@@ -80,7 +102,7 @@
                     class="border-yellow rounded-sm h-7"
                   />
                 </div>
-                <div class="flex flex-col w-6/12">
+                <div class="flex flex-col sm:w-6/12">
                   <label class="font-semibold">Last Name <span>*</span></label>
                   <input
                     formControlName="lastName"
@@ -89,8 +111,10 @@
                   />
                 </div>
               </div>
-              <div class="flex w-full justify-between">
-                <div class="flex flex-col">
+              <div
+                class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 w-full justify-between"
+              >
+                <div class="flex flex-col sm:w-5/12">
                   <label class="font-semibold"
                     >Mobile Number <span>*</span></label
                   >
@@ -100,7 +124,7 @@
                     class="border-yellow rounded-sm h-7"
                   />
                 </div>
-                <div class="flex flex-col w-6/12">
+                <div class="flex flex-col sm:w-6/12">
                   <label class="font-semibold">Email <span>*</span></label>
                   <input
                     formControlName="email"
@@ -118,7 +142,7 @@
                     class="border-yellow rounded-sm h-7"
                   />
                 </div>
-                <div class="flex flex-col w-3/12">
+                <div class="flex flex-col w-20 sm:w-3/12">
                   <label class="font-semibold">Number <span>*</span></label>
                   <input
                     formControlName="number"
@@ -128,7 +152,7 @@
                 </div>
               </div>
               <div class="flex justify-between w-full">
-                <div class="flex flex-col">
+                <div class="flex flex-col w-3/12 sm:4/12">
                   <label class="font-semibold">ZIP <span>*</span></label>
                   <input
                     formControlName="zip"
@@ -136,7 +160,7 @@
                     class="border-yellow rounded-sm h-7"
                   />
                 </div>
-                <div class="flex flex-col w-6/12">
+                <div class="flex flex-col sm:w-8/12">
                   <label class="font-semibold">City <span>*</span></label>
                   <input
                     formControlName="city"

@@ -10,10 +10,10 @@
       <h4 class="mt-20 text-lg dark-brown">
         Your total amount is: {{ total.toFixed(2) }}$
       </h4>
-      <p class="dark-brown text-xl font-semibold mt-8">
+      <p class="dark-brown text-xl text-center font-semibold mt-8">
         Please do not refresh the browser while the transaction is processing
       </p>
-      <div class="overflow-scroll scrolling mt-6 w-5/12">
+      <div class="overflow-scroll scrolling mt-6 w-8/12 sm:w-9/12 md:w-5/12">
         <div #paymentRef class="mt-16"></div>
       </div>
       <button routerLink="/tea" class="cancel-btn mt-10">Cancel</button>
