@@ -37,18 +37,18 @@
         Discover your favorite teas
       </h1>
       <h5
-        class="text-lg my-6 font-semibold w-6/12 self-center text-brown text-center"
+        class="text-lg my-6 font-semibold sm:w-6/12 self-center text-brown text-center"
       >
         We have invested in the best blends, the most skilled tea growers, the
         best plantations to ensure that every cup that reaches you is the best
         it can be.
       </h5>
-      <div class="flex flex-col mt-8">
-        <p class="font-semibold dark-brown ml-16 mb-6">
+      <div class="flex flex-col items-center sm:items-start mt-8">
+        <p class="font-semibold dark-brown sm:ml-16 mb-6">
           What are you looking for today?
         </p>
         <div
-          class="btn-group h-fit ml-16 w-fit flex justify-center items-center rounded"
+          class="btn-group h-fit sm:ml-16 w-fit flex justify-center items-center rounded"
         >
           <button
             #All
@@ -91,7 +91,9 @@
           </button>
         </div>
       </div>
-      <div class="w-10/12 self-center my-20 grid grid-cols-3 gap-8">
+      <div
+        class="w-10/12 self-center my-20 grid sm:grid-cols-2 md:grid-cols-3 gap-8"
+      >
         @for (tea of displayedTeas; track $index) {
         <div class="rounded overflow-hidden border-yellow">
           <img

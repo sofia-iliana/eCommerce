@@ -5,9 +5,10 @@
         <!-- Mobile menu button-->
         <button
           type="button"
-          class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          class="relative inline-flex items-center justify-center rounded-md p-2 brown focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
           aria-controls="mobile-menu"
           aria-expanded="false"
+          (click)="onOpenMenu()"
         >
           <span class="absolute -inset-0.5"></span>
           <span class="sr-only">Open main menu</span>
@@ -44,7 +45,7 @@
       <div
         class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
       >
-        <div routerLink="" class="flex items-center mr-10 cursor-pointer">
+        <div routerLink="" class="flex items-center sm:mr-10 cursor-pointer">
           <div class="flex flex-shrink-0 items-center leaf-container">
             <i class="fa fa-pagelines leaf"></i>
           </div>
@@ -62,12 +63,10 @@
             >
             <a
               routerLink="tea"
-              class="brown hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+              class="brown rounded-md px-3 py-2 text-lg font-medium"
               >Tea and Herbs</a
             >
-            <a
-              href="#"
-              class="brown hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+            <a href="#" class="brown rounded-md px-3 py-2 text-lg font-medium"
               >Accessories</a
             >
           </div>
@@ -90,14 +89,14 @@
           Your cart is empty
         </p>
         @for (item of cartItems; track $index) {
-        <div class="flex justify-between p-3 border-bottom-brown space-x-10">
-          <div class="flex justify-between w-52">
+        <div class="flex justify-between p-3 border-bottom-brown sm:space-x-10">
+          <div class="flex flex-col sm:flex-row justify-between w-52">
             <p class="dark-brown font-semibold">{{ item.name }}</p>
             <p class="dark-brown font-semibold">
               {{ item.quantity && (item.price * item.quantity).toFixed(2) }}$
             </p>
           </div>
-          <div class="flex">
+          <div class="flex w-1/2 items-center justify-end">
             <div class="border-yellow rounded-sm mr-4">
               <button class="px-2 font-semibold" (click)="reduceAmount(item)">
                 <i class="fa fa-minus size-sm brown"></i>
@@ -131,29 +130,21 @@
     </div>
   </div>
   <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="sm:hidden" id="mobile-menu">
+  <div class="sm:hidden" id="mobile-menu" *ngIf="openMenu">
     <div class="space-y-1 px-2 pb-3 pt-2">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
       <a
-        href="#"
-        class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-        aria-current="page"
-        >Dashboard</a
+        routerLink="about-tea"
+        class="brown block rounded-md px-3 py-2 text-base font-medium"
+        >About Tea</a
       >
       <a
-        href="#"
-        class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-        >Team</a
+        routerLink="tea"
+        class="brown block rounded-md px-3 py-2 text-base font-medium"
+        >Tea and Herbs</a
       >
-      <a
-        href="#"
-        class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-        >Projects</a
-      >
-      <a
-        href="#"
-        class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-        >Calendar</a
+      <a href="#" class="brown block rounded-md px-3 py-2 text-base font-medium"
+        >Accesories</a
       >
     </div>
   </div>

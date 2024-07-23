@@ -6,7 +6,6 @@ import {
   ViewChild,
   inject,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { CartService } from '../Cart.service';
 import { TeaItem } from '../teaItem';
@@ -26,7 +25,7 @@ export class PaymentComponent implements OnInit {
   containerClass = 'w-full bg-beige flex flex-col items-center';
   loadingClass = 'w-full bg-beige flex flex-col items-center opacity-30';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 

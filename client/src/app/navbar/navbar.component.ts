@@ -16,6 +16,7 @@ export class NavbarComponent {
   cartService = inject(CartService);
   cartItems = this.cartService.getCartItems();
   showCart = false;
+  openMenu = false;
 
   displayCartList() {
     console.log(this.cartService.getCartItems());
@@ -27,6 +28,10 @@ export class NavbarComponent {
 
   showCartItems() {
     this.showCart = !this.showCart;
+  }
+
+  onOpenMenu() {
+    this.openMenu = !this.openMenu;
   }
 
   increaseAmount(item: TeaItem) {
