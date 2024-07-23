@@ -7,14 +7,16 @@
   </head>
   <body>
     <div class="bg-beige pt-12 flex flex-col items-center">
-      <div class="text-center mt-16 dark-brown bg-green p-10 w-7/12 rounded-md">
+      <div
+        class="text-center mt-16 dark-brown bg-green p-4 md:p-10 w-11/12 md:w-7/12 rounded-md"
+      >
         <h3 class="text-2xl font-semibold">Your transaction is successful.</h3>
         <p class="text-lg mt-2">Your order will be shipped soon</p>
       </div>
-      <div class="bg-light mt-8 w-9/12 rounded-md p-8">
+      <div class="bg-light mt-8 w-11/12 md:w-9/12 rounded-md p-8">
         <h5 class="text-center font-bold text-2xl dark-brown">Order Details</h5>
-        <div class="flex justify-between">
-          <div class="w-5/12 space-y-5 my-10">
+        <div class="flex flex-col sm:flex-row justify-between">
+          <div class="sm:w-5/12 space-y-5 my-10">
             @for (item of cart; track $index) {
             <div class="flex dark-brown font-semibold justify-between text-lg">
               <p>{{ item.name }}</p>
