@@ -1,0 +1,25 @@
+﻿namespace API.Entities;
+
+public class Order
+{
+    public int Id { get; set; }
+    public required string FirstName { get; set; }
+    public required string LastName { get; set; }
+    public required string Email { get; set; }
+    public required string Mobile { get; set; }
+    public required string City { get; set; }
+    public required string Country { get; set; }
+    public required string Street { get; set; }
+    public required string StreetNumber { get; set; }
+    public required string Zip { get; set; }
+    public required string Comments { get; set; }
+    public required OrderItem[] OrderItems { get; set; }
+}
+
+public class OrderItem
+{
+    public int Id { get; set; }
+    public required string Name { get; set; }
+    public required string Type { get; set; }
+    public decimal Price { get; set; }
+}
