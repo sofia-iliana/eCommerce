@@ -9,6 +9,9 @@ import {
 import { RouterModule, Router } from '@angular/router';
 import { CartService } from '../Cart.service';
 import { TeaItem } from '../teaItem';
+import { HttpClient } from '@angular/common/http';
+import { BuyersInfoService } from '../BuyersInfo.service';
+
 
 @Component({
   selector: 'app-payment',
@@ -18,8 +21,9 @@ import { TeaItem } from '../teaItem';
   styleUrl: './payment.component.css',
 })
 export class PaymentComponent implements OnInit {
-  cartService = inject(CartService);
-  cartItems = this.cartService.getCartItems();
+  cartItems = inject(CartService).getCartItems();
+  buyersInfo = inject(BuyersInfoService).buyersInfo;
+  http = inject(HttpClient);
   total = 0;
   loading = false;
   containerClass = 'w-full bg-beige flex flex-col items-center';
@@ -52,9 +56,32 @@ export class PaymentComponent implements OnInit {
         },
         onApprove: (data: any, actions: any) => {
           return actions.order.capture().then((details: any) => {
-            console.log(details);
             if (details.status === 'COMPLETED') {
-              this.router.navigate(['/success']);
+              this.http.post("https://localhost:5001/api/order", {
+                id: details.id,
+                firstName: this.buyersInfo.firstName,
+                lastName: this.buyersInfo.lastName,
+                email: this.buyersInfo.email,
+                mobile: this.buyersInfo.mobile,
+                city: this.buyersInfo.city,
+                country: this.buyersInfo.country,
+                street: this.buyersInfo.street,
+                streetNumber: this.buyersInfo.number,
+                zip: this.buyersInfo.zip,
+                comments: this.buyersInfo?.comments,
+                orderItems: this.cartItems.map((item, index) => {
+                  return ({ id: details.id + index, name: item.name, type: item.type, price: item.price })
+                })
+              }, { observe: 'response' }).subscribe({
+                next: (response) => {
+                  if (response.status == 200) {
+                    console.log(response);
+                    this.router.navigate(['/success']);
+                  } else {
+                    console.log(response)
+                  }
+                }
+              })
             }
           });
         },

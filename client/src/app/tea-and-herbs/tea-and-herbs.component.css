@@ -36,3 +36,7 @@
 .bg-yellow:hover {
   background-color: #f8d98a;
 }
+
+.cart-hight {
+  min-height: 220px;
+}
