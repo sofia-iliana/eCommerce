@@ -184,6 +184,15 @@
                   class="border-yellow rounded-sm h-32"
                 ></textarea>
               </div>
+              <p
+                class="text-red text-center font-semibold"
+                *ngIf="
+                  registerForm.invalid &&
+                  (registerForm.dirty || registerForm.touched)
+                "
+              >
+                Please make sure to fill all required fields.
+              </p>
               <button
                 type="submit"
                 *ngIf="registerForm.status"

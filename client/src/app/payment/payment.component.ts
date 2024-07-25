@@ -70,7 +70,7 @@ export class PaymentComponent implements OnInit {
                 zip: this.buyersInfo.zip,
                 comments: this.buyersInfo?.comments,
                 orderItems: this.cartItems.map((item, index) => {
-                  return ({ id: details.id + index, name: item.name, type: item.type, price: item.price })
+                  return ({ id: details.id + index, name: item.name, type: item.type, price: item.price, quantity: item.quantity })
                 })
               }, { observe: 'response' }).subscribe({
                 next: (response) => {

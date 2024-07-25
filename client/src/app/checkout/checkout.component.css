@@ -54,3 +54,7 @@ textarea {
 span {
   color: #af2912;
 }
+
+input.ng-invalid.ng-touched {
+  border: 1px solid #af2912;
+}
