@@ -69,6 +69,7 @@ export class PaymentComponent implements OnInit {
                 streetNumber: this.buyersInfo.number,
                 zip: this.buyersInfo.zip,
                 comments: this.buyersInfo?.comments,
+                dateOfOrder: new Date().toJSON(),
                 orderItems: this.cartItems.map((item, index) => {
                   return ({ id: details.id + index, name: item.name, type: item.type, price: item.price, quantity: item.quantity })
                 })

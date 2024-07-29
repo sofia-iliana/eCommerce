@@ -1,0 +1,44 @@
+.bg-beige {
+  background-color: #faf0d6;
+  height: 100dvh;
+}
+
+.text-dark-brown {
+  color: #362719;
+}
+
+.text-brown {
+  color: #884c2a;
+}
+
+.border-yellow {
+  border: 1px solid #f7e4b6;
+  background-color: #fcf8e7;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 7px;
+}
+
+input:focus {
+  outline: none;
+}
+input {
+  background-color: #fcf8e7;
+  width: 250px;
+}
+
+.text-green {
+  color: #55b37f;
+}
+
+.bg-green {
+  background-color: #55b37f;
+}
+
+.border-green {
+  border: 2px solid #55b37f;
+}
+
+.green-line {
+  border-top: 1px solid #55b37f;
+}

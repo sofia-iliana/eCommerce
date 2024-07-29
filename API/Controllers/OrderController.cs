@@ -24,4 +24,12 @@ public class OrderController(DataContext context) : ControllerBase
         var orders = await context.Orders.Include(o => o.OrderItems).ToListAsync();
         return orders;
     }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<IEnumerable<Order>>> GetOrder(string id)
+    {
+        var order = await context.Orders.Where(o => o.Id == id).Include(o => o.OrderItems).ToListAsync();
+        if (order == null) return NotFound();
+        return order;
+    }
 }

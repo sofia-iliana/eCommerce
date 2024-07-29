@@ -13,6 +13,7 @@ public class Order
     public required string StreetNumber { get; set; }
     public required string Zip { get; set; }
     public string? Comments { get; set; }
+    public required string DateOfOrder { get; set; }
     public required ICollection<OrderItem> OrderItems { get; set; }
 }
 

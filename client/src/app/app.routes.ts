@@ -5,6 +5,7 @@ import { SuccessfulTransactionComponent } from './successful-transaction/success
 import { PaymentComponent } from './payment/payment.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { TeaAndHerbsComponent } from './tea-and-herbs/tea-and-herbs.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent, title: 'Home Page' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'tea', component: TeaAndHerbsComponent, title: 'Tea and Herbs' },
   { path: 'checkout', component: CheckoutComponent, title: 'Checkout' },
   { path: 'payment', component: PaymentComponent, title: 'Payment' },
+  { path: 'orders', component: MyOrdersComponent, title: 'Orders' },
   {
     path: 'success',
     component: SuccessfulTransactionComponent,
