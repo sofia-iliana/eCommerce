@@ -1,6 +1,7 @@
 .bg-beige {
   background-color: #faf0d6;
-  height: 100dvh;
+  min-height: 100dvh;
+  height: 100%;
 }
 
 .text-dark-brown {
@@ -41,4 +42,8 @@ input {
 
 .green-line {
   border-top: 1px solid #55b37f;
+}
+
+.text-light {
+  color: #faf0d6;
 }

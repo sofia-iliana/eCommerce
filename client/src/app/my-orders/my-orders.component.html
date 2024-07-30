@@ -27,36 +27,51 @@
         </div>
       </form>
       <div *ngIf="order" class="w-10/12">
-        <h4 class="font-semibold">Order Details {{ order[0].id }}</h4>
+        <h4 class="font-semibold">Order Details #{{ order.id }}</h4>
       </div>
       <div class="w-10/12 flex justify-center items-center mt-12">
         <div
-          class="w-7 h-7 border-green text-green rounded-full flex items-center justify-center"
+          class="w-7 h-7 border-green bg-green text-light rounded-full flex items-center justify-center"
         >
-          <p class="font-semibold">1</p>
+          <i class="fa fa-check" aria-hidden="true"></i>
+        </div>
+        <div class="w-4/12 green-line"></div>
+        <div
+          class="w-7 h-7 border-green bg-green text-light rounded-full flex items-center justify-center"
+        >
+          <p class="font-semibold" *ngIf="orderStatus === ''">2</p>
+          <i
+            class="fa fa-check"
+            aria-hidden="true"
+            *ngIf="orderStatus !== ''"
+          ></i>
         </div>
         <div class="w-4/12 green-line"></div>
         <div
           class="w-7 h-7 border-green text-green rounded-full flex items-center justify-center"
+          [ngClass]="orderStatus === '' ? unselectedClass : selectedClass"
         >
-          <p class="font-semibold">2</p>
-        </div>
-        <div class="w-4/12 green-line"></div>
-        <div
-          class="w-7 h-7 border-green text-green rounded-full flex items-center justify-center"
-        >
-          <p class="font-semibold">3</p>
+          <p class="font-semibold" *ngIf="orderStatus !== 'delivery'">3</p>
+          <i
+            class="fa fa-check"
+            aria-hidden="true"
+            *ngIf="orderStatus === 'delivery'"
+          ></i>
         </div>
       </div>
       <div class="w-8/12 flex justify-between">
         <div>
           <p class="font-semibold">Confirm Order</p>
-          <p *ngIf="order">{{ order[0].dateOfOrder }}</p>
+          <p *ngIf="order" class="text-sm text-center">{{ formattedDate }}</p>
         </div>
 
         <div><p class="font-semibold">Shipping</p></div>
 
-        <div><p class="font-semibold">Out for Delivery</p></div>
+        <div class="text-center">
+          <p class="font-semibold">Out for Delivery</p>
+          <p class="text-sm">Estimated date</p>
+          <p *ngIf="order" class="text-sm">{{ estimatedDelivery }}</p>
+        </div>
       </div>
     </div>
   </body>
