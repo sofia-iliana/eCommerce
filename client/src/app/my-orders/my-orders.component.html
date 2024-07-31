@@ -17,7 +17,7 @@
         class="w-full flex justify-center m-8"
       >
         <div class="flex items-center space-x-4">
-          <label class="font-semibold">Order Id</label>
+          <label class="font-semibold hidden md:flex">Order Id</label>
           <div class="border-yellow">
             <input formControlName="orderId" />
             <button type="submit">
@@ -57,7 +57,7 @@
             ></i>
           </div>
         </div>
-        <div class="w-8/12 flex justify-between">
+        <div class="w-full px-2 md:w-8/12 flex justify-between">
           <div>
             <p class="font-semibold">Confirm Order</p>
             <p class="text-sm text-center">{{ formattedDate }}</p>
@@ -71,23 +71,24 @@
         </div>
         <div
           *ngIf="order"
-          class="w-7/12 flex flex-col items-center my-12 bg-light px-4 py-10 rounded-md"
+          class="w-7/12 flex flex-col items-center my-12 bg-light px-4 py-6 md:py-10 rounded-md"
         >
-          <div class="flex justify-around w-full">
-            <p class="font-semibold">Order Details #{{ order.id }}</p>
+          <div class="flex flex-col md:flex-row justify-around w-full">
+            <p class="font-semibold">Order Id: {{ order.id }}</p>
             <p class="font-semibold">
               Name: {{ order.firstName }} {{ order.lastName }}
             </p>
           </div>
-          <div class="w-8/12">
+          <div class="w-11/12 md:w-7/12">
             @for (item of order.orderItems; track $index) {
 
             <div
               class="flex dark-brown font-semibold justify-between mt-8 w-full"
             >
               <p>{{ item.name }}</p>
-              <p>Price: {{ item.quantity }} x {{ item.price.toFixed(2) }}$</p>
+              <p>{{ item.quantity }} x {{ item.price.toFixed(2) }}$</p>
             </div>
+            <div class="border-brown w-full mt-6"></div>
             }
           </div>
         </div>

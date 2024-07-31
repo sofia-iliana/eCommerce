@@ -51,3 +51,7 @@ input {
 .bg-light {
   background-color: #fcf8e7;
 }
+
+.border-brown {
+  border-top: 1px solid #884c2a;
+}

@@ -59,7 +59,6 @@ export class MyOrdersComponent implements OnInit {
         } else if (this.currentDate >= localEstimated) {
           this.orderStatus = "delivery";
         }
-        console.log(this.orderStatus);
       },
       error: (error) => console.log(error),
     })
