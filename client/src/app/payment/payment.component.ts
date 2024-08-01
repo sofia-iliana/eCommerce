@@ -56,6 +56,7 @@ export class PaymentComponent implements OnInit {
         },
         onApprove: (data: any, actions: any) => {
           return actions.order.capture().then((details: any) => {
+            this.loading = true;
             if (details.status === 'COMPLETED') {
               this.http.post("https://localhost:5001/api/order", {
                 id: details.id,
@@ -75,6 +76,7 @@ export class PaymentComponent implements OnInit {
                 })
               }, { observe: 'response' }).subscribe({
                 next: (response) => {
+                  this.loading = false;
                   if (response.status == 200) {
                     console.log(response);
                     this.router.navigate(['/success']);
